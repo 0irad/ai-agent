@@ -28,7 +28,6 @@ def run_python_file(working_directory:str, file_path:str, args:list[str]|None=No
                 timeout=30,
                 capture_output=True
             )
-            print(command_execution)
             result = f"Process exited with code {command_execution.returncode}"
             if not command_execution.stderr and not command_execution.stdout:
                 result += "\nNo output produced"
@@ -38,6 +37,3 @@ def run_python_file(working_directory:str, file_path:str, args:list[str]|None=No
 
     except Exception as e:
         return f"Error executing python file: {e}"
-    return
-
-print(run_python_file("calculator", "main.py"))
