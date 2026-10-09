@@ -2,7 +2,7 @@ import os
 import argparse
 from dotenv import load_dotenv
 from openai import OpenAI
-from functions import get_file_content
+from prompts import system_prompt
 
 load_dotenv()
 
@@ -17,11 +17,14 @@ client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
     api_key=api_key,
 )
-messages = [{"role": "user", "content": args.user_prompt}]
+messages = [
+    {"role": "system", "content": system_prompt},
+    {"role": "user", "content": args.user_prompt}
+]
 
 response = client.chat.completions.create(
     model="openrouter/free",
-    messages=messages,
+    messages=messages
 )
 if args.verbose:
     print(f"User prompt: {args.user_prompt}")
