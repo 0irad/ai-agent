@@ -6,11 +6,13 @@ class TestGetFilesInfo(unittest.TestCase):
 
     def test_current_dir(self) -> None:
         result = get_files_info("calculator", ".")
+        print("Result for current directory:\n\t")
         print(result)
         # self.assertEqual(result, 'Success: "." is within the working directory')
 
     def test_bin_dir(self) -> None:
         result = get_files_info("calculator", "/bin")
+        print("Result for '/bin' directory:\n\t")
         print(result)
         # self.assertEqual(
         #     result,
@@ -19,6 +21,7 @@ class TestGetFilesInfo(unittest.TestCase):
 
     def test_parent_dir(self) -> None:
         result = get_files_info("calculator", "../")
+        print("Result for '../' directory:\n\t")
         print(result)
         # self.assertEqual(
         #     result,
@@ -26,7 +29,8 @@ class TestGetFilesInfo(unittest.TestCase):
         # )
 
     def test_main_file(self) -> None:
-        result = get_files_info("calculator", "main.py")
+        result = get_files_info("calculator", "pkg")
+        print("Result for 'pkg' directory:\n\t")
         print(result)
         # self.assertEqual(
         #     result,
